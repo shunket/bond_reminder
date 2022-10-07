@@ -26,11 +26,8 @@ def get_today_bonds():
     return today_bonds
 
 
-def get_message():
-    bonds = get_today_bonds()
-    if len(bonds) > 0:
-        description = f"今日有{len(bonds)}条鱼"
-
+def get_message(bonds):
+    description = f"今日有{len(bonds)}条鱼"
     message = {
         "msgtype": "news",
         "news": {
@@ -54,8 +51,9 @@ def send_message():
     headers = {"Content-Type": "text/plain"}
     send_url = WEBHOOK
     bonds = get_today_bonds()
+    print(bonds)
     if len(bonds) > 0:
-        send_data = get_message()
+        send_data = get_message(bonds=bonds)
         res = requests.post(url=send_url, headers=headers, json=send_data)
         print(res.text)
 
