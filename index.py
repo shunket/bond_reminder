@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 import requests
 import json
-imprt os
+import os
 WEBHOOK = os.environ.get('WECHATWORK_WEBHOOK')
 
 request_params = {
